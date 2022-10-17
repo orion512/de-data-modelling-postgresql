@@ -16,17 +16,17 @@ sudo -u {postgres} psql
 psql -U postgres
 ```
 
-# switch to postgres account
+**switch to postgres account**
 sudo -i -u postgres
 exit # back to main user
 
-# accessing psql without switching accounts
+**accessing psql without switching accounts**
 sudo -u postgres psql
 
-# create new user with postgres user
+**create new user with postgres user**
 sudo -u postgres createuser --interactive
 
-# PSQL commands
+**PSQL commands**
 ```
 \conninfo # connection info
 \l # list all databaes
@@ -38,7 +38,7 @@ GRANT ALL PRIVILEGES ON DATABASE db_name to user_name;
 ALTER USER username CREATEDB; # grant user privilege to create dbs
 ```
 
-# reinstall pgsql DB
+**reinstall pgsql DB**
 ```
 # linux
 sudo yum remove postgresql11-server
