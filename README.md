@@ -16,16 +16,6 @@ sudo -u {postgres} psql
 psql -U postgres
 ```
 
-**switch to postgres account**
-sudo -i -u postgres
-exit # back to main user
-
-**accessing psql without switching accounts**
-sudo -u postgres psql
-
-**create new user with postgres user**
-sudo -u postgres createuser --interactive
-
 **PSQL commands**
 ```
 \conninfo # connection info
@@ -51,5 +41,3 @@ sudo systemctl enable postgresql-11
 
 sudo systemctl restart postgresql-11 # restart service
 ```
-
-
