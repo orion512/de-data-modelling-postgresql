@@ -1,26 +1,67 @@
 # DROP TABLES
 
-songplay_table_drop = ""
-user_table_drop = ""
-song_table_drop = ""
-artist_table_drop = ""
-time_table_drop = ""
+songplay_table_drop = "DROP TABLE IF EXISTS songplays;"
+user_table_drop = "DROP TABLE IF EXISTS users;"
+song_table_drop = "DROP TABLE IF EXISTS songs;"
+artist_table_drop = "DROP TABLE IF EXISTS artists;"
+time_table_drop = "DROP TABLE IF EXISTS time;"
 
 # CREATE TABLES
 
 songplay_table_create = ("""
+    CREATE TABLE IF NOT EXISTS songplays (
+        songplay_id INT PRIMARY KEY,
+        start_time BIGINT REFERENCES time (start_time),
+        user_id INT REFERENCES users (user_id),
+        level VARCHAR,
+        song_id INT REFERENCES songs (song_id),
+        artist_id INT REFERENCES artists (artist_id),
+        session_id INT,
+        location VARCHAR,
+        user_agent VARCHAR
+    );
 """)
 
 user_table_create = ("""
+    CREATE TABLE IF NOT EXISTS users (
+        user_id INT PRIMARY KEY,
+        first_name VARCHAR,
+        last_name VARCHAR,
+        gender VARCHAR,
+        level VARCHAR
+    );
 """)
 
 song_table_create = ("""
+    CREATE TABLE IF NOT EXISTS songs (
+        song_id INT PRIMARY KEY,
+        title VARCHAR,
+        artist_id INT REFERENCES artists (artist_id),
+        year INT,
+        duration FLOAT
+    );
 """)
 
 artist_table_create = ("""
+    CREATE TABLE IF NOT EXISTS artists (
+        artist_id INT PRIMARY KEY,
+        name VARCHAR,
+        location VARCHAR,
+        latitude FLOAT,
+        longitude FLOAT
+    );
 """)
 
 time_table_create = ("""
+    CREATE TABLE IF NOT EXISTS time (
+        start_time BIGINT PRIMARY KEY,
+        hour INT,
+        day INT,
+        week INT,
+        month INT,
+        year INT,
+        weekday INT
+    );
 """)
 
 # INSERT RECORDS
